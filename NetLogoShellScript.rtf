@@ -1,0 +1,33 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red64\green11\blue217;\red0\green0\blue163;\red224\green228\blue9;
+\red0\green0\blue0;\red193\green101\blue28;\red180\green36\blue25;\red200\green20\blue201;}
+{\*\expandedcolortbl;;\cssrgb\c32309\c18666\c88229;\cssrgb\c0\c0\c70000;\cssrgb\c90000\c90000\c0;
+\csgray\c0;\cssrgb\c80555\c47366\c13837;\cssrgb\c76411\c21697\c12527;\cssrgb\c83397\c23074\c82666;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 #!/\cf3 \cb4 bin\cf2 \cb1 /sh\cf5 \
+\cf2 #SBATCH --ntasks-per-node=40\cf5 \
+\cf2 #SBATCH --partition defq\cf5 \
+\cf2 #SBATCH --no-requeue\cf5 \
+\
+module purge\
+module add shared\
+module add netlogo/6.2.2\
+\
+\cf6 echo\cf5 \
+\cf6 echo\cf7  \cf6 "\cf7 Starting netlogo-headless.sh on node \cf8 `hostname`\cf7  at \cf8 `date`\cf6 "\cf5 \
+\cf6 echo\cf5 \
+\
+netlogo-headless.sh \cf6 \\\cf5 \
+  \cf8 --model\cf5  \cf6 "\cf7 1089Experiment1kFullOptimized.nlogo\cf6 "\cf5  \cf6 \\\cf5 \
+  \cf8 --threads\cf5  \cf8 $\{SLURM_CPUS_ON_NODE\}\cf5  \cf6 \\\cf5 \
+  \cf8 --experiment\cf5  Experiment70k \cf6 \\\cf5 \
+  \cf8 --spreadsheet\cf5  Experiment70k1f.csv \cf6 \\\cf5 \
+\
+\cf6 echo\cf5 \
+\cf6 echo\cf7  \cf6 "\cf7 Ending netlogo-headless.sh on node \cf8 `hostname`\cf7  at \cf8 `date`\cf6 "\cf5 \
+\cf6 echo\cf5 \
+\
+}
